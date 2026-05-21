@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chart-style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/card-style.css') }}">
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo"><a href="/home">Finance Tracker</a></div>
+    <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/finance">Check Finance</a></li>
+      <li><a href="/add_Expense">Add Expenses</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Make every cent make sense</h1>
+    <p>Do not save what is left after spending, but spend what is left after saving.</p>
+  </section>
+
+  <form action="{{ url_for('home',username=username) }}" method="post">
+    <div class="mb-3">
+      <input type="number" class="form-control" name="budget" id="budget"
+        placeholder="{% if allBudget.budget %}{{ allBudget.budget_by_category }}{% else %}Enter your budget{% endif %}">
+      {% if error %}
+      <div style="padding: 20px; background-color: #f44336; color: white; margin-bottom: 15px;">
+        <strong>wait!</strong>
+        <p>{{error}}</p>
+      </div>
+      {% endif %}
+
+      <select class="form-select" name="Month" aria-label="Default select example">
+        <option selected>Enter the Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+      </select>
+      <button type="submit" class="btn btn-dark btn-lg px-5">Set Budget</button>
+    </div>
+  </form>
+
+  <!-- ===== Cards Section ===== -->
+  <div class="cards-section">
+
+    <div class="card">
+      <div class="card-img-wrapper" style="background-color: #E6F1FB;">
+        <a href="/finance"><img src="{{ url_for('static', filename='images/Excel-charts-11.png') }}" class="card-img-top" alt="Expense chart"></a>
+      </div>
+      <div class="card-body">
+        <span class="card-badge" style="background:#E6F1FB; color:#0C447C;">Analytics</span>
+        <h5 class="card-title">Monthly expense chart</h5>
+        <p class="card-text">Visualize where your money goes each month with a clear bar and trend line chart.</p>
+        <a href="/finance" class="card-link">View finance report →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper" style="background-color: #E1F5EE;">
+        <a href="/add_Expence"><img src="{{ url_for('static', filename='images/Screenshot 2026-05-20 230356.png') }}" class="card-img-top" alt="Add expense"></a>
+      </div>
+      <div class="card-body">
+        <span class="card-badge" style="background:#E1F5EE; color:#085041;">Add entry</span>
+        <h5 class="card-title">Log a new expense</h5>
+        <p class="card-text">Quickly add a new transaction with amount, category, and the month it belongs to.</p>
+        <a href="/add_Expense" class="card-link">Add expense →</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

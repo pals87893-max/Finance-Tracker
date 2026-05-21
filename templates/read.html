@@ -1,0 +1,130 @@
+{% extends 'nav.html' %}
+{% block add %}
+
+<body>
+  {% if allBudget|length == 0 %}
+  <div style="padding: 20px; background-color: #f44336; color: white; margin-bottom: 15px;">
+    <strong>Error!</strong>
+    <p>Nothing here please set your budget first</p>
+  </div>
+  {% else %}
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <span class="logo-mark">₹</span>
+        <div>
+          <h1 class="app-title">Finance Tracker</h1>
+          <p class="app-subtitle">{{allBudget[0].month}}</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="stat-card">
+          {% set calc = namespace(total=0) %}
+          {% for Expense in allExpence %}
+          {% set calc.total = calc.total + Expense.ammount %}
+          {% endfor %}
+          <span class="stat-label">Total Spent</span>
+          <span class="stat-value danger">{{ calc.total }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Budget Left</span>
+          <span class="stat-value success">
+            {{ allBudget[0].budget - calc.total }}</span>
+        </div>
+      </div>
+    </header>
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <h3 style="font-family: Georgia, serif;">Finance Table</h3>
+      </div>
+      <a href="/add_Expense" class="add-btn">+ Add Expense</a>
+    </div>
+    <!-- Table -->
+    <div class="table-wrapper">
+      <table class="finance-table">
+        <thead>
+          <tr>
+            <th>sl_no</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for Expense in allExpence %}
+            <th scope="row">{{loop.index}}</th>
+            <td>{{Expense.date}}</td>
+            <td>{{Expense.name}}</td>
+            <td>{{Expense.ammount}}</td>
+            <td>{{Expense.catagory}}</td>
+            <td>
+              <a href="{{ url_for('update',sl_no=Expense.sl_no)}}" type="button"
+                class="btn btn-outline-warning btn-sm mx-1">
+                Update
+                <a href="{{ url_for('delete', sl_no=Expense.sl_no) }}" class="btn btn-outline-danger btn-sm mx-1">
+                  Delete</button>
+            </td>
+          </tr>
+          {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="font-family: Georgia, serif;">Finance Chart</h3>
+      <main class="main">
+
+        <!-- Chart card -->
+        <div class="card">
+
+          <!-- Card header -->
+
+
+
+          <!-- Chart -->
+          <div class="chart-area">
+            <div class="chart">
+              <div class="y-axis">
+                <span>{{"%.2f"|format(allBudget[0].budget)}}</span>
+                <span>{{"%.2f"|format(allBudget[0].budget*(80/100))}}</span>
+                <span>{{"%.2f"|format(allBudget[0].budget*(60/100))}}</span>
+                <span>{{"%.2f"|format(allBudget[0].budget*(40/100))}}</span>
+                <span>{{"%.2f"|format(allBudget[0].budget*(20/100))}}</span>
+                <span>0</span>
+              </div>
+
+              <div class="grid-lines">
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+              </div>
+              <div>
+              </div>
+              <div class="bars">
+                {% for cat in category %}
+                <div class="bar-group">
+                  <div class="bar-wrap">
+                    <div class="tooltip">{{total_amount.get(cat,0 )}}</div>
+                    <div class="bar" style="--h:{{(total_amount.get(cat,0 )/allBudget[0].budget)*100}}%"></div>
+                  </div>
+                  <span class="label">{{cat}}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+    {%endif%}
+</body>
+
+{% endblock add %}

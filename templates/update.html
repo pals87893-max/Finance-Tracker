@@ -1,0 +1,33 @@
+{% extends 'nav.html' %}
+{% block add %}
+
+<body>
+    <div class="container my-4">
+        <form action="{{ url_for('update',sl_no=mistake.sl_no) }}" method="POST">
+            <h2>Add your expences for {{Month}}</h2> <br>
+            <!-- Title Section -->
+            <h3 class="h5">Name</h3>
+            <div class="mb-3">
+
+                <input type="text" class="form-control-1" name="name" value="{{mistake.name}}" required>
+            </div>
+
+            <!-- Description Section -->
+            <h3 class="h5">Ammount</h3>
+            <div class="mb-3">
+
+                <input type="number" class="form-control" name="amount" id="amount" value="{{ mistake.ammount }}">
+                <select class="form-select" name="category" aria-label="Default select example">
+                    <option selected>{{ mistake.catagory }}</option>
+                    <option value="Food">🍱 Food</option>
+                    <option value="House expences">🏡 House expences</option>
+                    <option value="Work Expences">💼 Work expences</option>
+                    <option value="Entertainment">🎬 Entertainment</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg px-5">Check Finance</button>
+    </div>
+    </form>
+    </div>
+{% endblock add %}

@@ -1,0 +1,41 @@
+{% extends 'nav.html' %}
+{% block add %}
+
+<body>
+    <div class="container my-4">
+        {% if allBudget|length == 0 %}
+        <div style="padding: 20px; background-color: #f44336; color: white; margin-bottom: 15px;">
+            <strong>Error!</strong>
+            <p>Nothing here please set your budget first</p>
+        </div>
+        {% else %}
+        <form action="{{ url_for('expenses',) }}" method="POST">
+            <h2>Add your expences for {{allBudget[0].month}}</h2> <br>
+            <!-- Title Section -->
+            <h3 class="h5">Name</h3>
+            <div class="mb-3">
+
+                <input type="text" class="form-control-1" name="name" placeholder="Enter the name..." required>
+            </div>
+
+            <!-- Description Section -->
+            <h3 class="h5">Ammount</h3>
+            <div class="mb-3">
+
+                <input type="number" class="form-control" name="amount" id="amount"
+                    placeholder="Write the amount here...">
+                <select class="form-select" name="category" aria-label="Enter the category" required>
+                    <option value="" disabled selected>Enter the category</option>
+                    <option value="Food">🍱 Food</option>
+                    <option value="House expences">🏡 House expences</option>
+                    <option value="Work Expences">💼 Work expences</option>
+                    <option value="Entertainment">🎬 Entertainment</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg px-5">Check Finance</button>
+    </div>
+    </form>
+    {%endif%}
+    </div>
+    {% endblock add %}

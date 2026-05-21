@@ -1,0 +1,310 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --border: #e4e0d8;
+    --text-primary: #1a1814;
+    --text-secondary: #6b6760;
+    --text-muted: #a09d97;
+    --accent: #1a1814;
+    --success: #2d6a4f;
+    --success-bg: #d8f3dc;
+    --danger: #9b2226;
+    --danger-bg: #fde8e8;
+    --badge-food-bg: #fff3cd;
+    --badge-food-text: #7d5a00;
+    --badge-housing-bg: #dbeafe;
+    --badge-housing-text: #1e40af;
+    --badge-work-bg: #ede9fe;
+    --badge-work-text: #5b21b6;
+    --badge-entertainment-bg: #fce7f3;
+    --badge-entertainment-text: #9d174d;
+    --radius: 10px;
+    --radius-sm: 6px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+}
+
+.page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.logo-mark {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    line-height: 1;
+    background: var(--text-primary);
+    color: var(--bg);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.header-right {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.65rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 100px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.stat-value.success { color: var(--success); }
+.stat-value.danger  { color: var(--danger); }
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.tab {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.tab:hover { border-color: var(--text-primary); color: var(--text-primary); }
+
+.tab.active {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+}
+
+.add-btn {
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.45rem 1.1rem;
+    background: var(--text-primary);
+    color: var(--bg);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+}
+
+.add-btn:hover { opacity: 0.8; }
+
+/* Table */
+.table-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.finance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.finance-table thead tr {
+    background: #f1ede6;
+    border-bottom: 1px solid var(--border);
+}
+
+.finance-table th {
+    padding: 0.85rem 1.1rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+}
+
+.finance-table th.text-right  { text-align: right; }
+.finance-table th.text-center { text-align: center; }
+
+.finance-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s ease;
+}
+
+.finance-table tbody tr:last-child { border-bottom: none; }
+.finance-table tbody tr:hover { background: #faf8f4; }
+
+.finance-table td {
+    padding: 0.85rem 1.1rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+td.sl {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    width: 40px;
+}
+
+td.name-cell {
+    font-weight: 500;
+}
+
+td.date {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+td.amount {
+    font-weight: 500;
+    font-size: 0.92rem;
+    text-align: right;
+    color: var(--text-primary);
+}
+
+td.actions {
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.28rem 0.65rem;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+.badge.food          { background: var(--badge-food-bg);          color: var(--badge-food-text); }
+.badge.housing       { background: var(--badge-housing-bg);       color: var(--badge-housing-text); }
+.badge.work          { background: var(--badge-work-bg);          color: var(--badge-work-text); }
+.badge.entertainment { background: var(--badge-entertainment-bg); color: var(--badge-entertainment-text); }
+
+/* Action Buttons */
+.icon-btn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 0.3rem 0.45rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.12s ease;
+    line-height: 1;
+}
+
+.icon-btn:hover {
+    border-color: var(--border);
+    background: var(--bg);
+}
+
+/* Footer / Total Row */
+.finance-table tfoot tr {
+    background: #f1ede6;
+    border-top: 2px solid var(--border);
+}
+
+.finance-table tfoot td {
+    padding: 0.9rem 1.1rem;
+}
+
+td.total-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+td.total-amount {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: right;
+    color: var(--danger);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    body { padding: 1rem; }
+
+    .header { flex-direction: column; align-items: flex-start; }
+    .header-right { width: 100%; justify-content: space-between; }
+    .stat-card { flex: 1; align-items: flex-start; }
+
+    .table-wrapper { overflow-x: auto; }
+    .finance-table { min-width: 580px; }
+}

@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  background-color: #f5f2ee;
+  color: #222;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.logo a{
+  text-decoration: none;
+  color: #444;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #000;
+}
+
+/* HERO */
+.hero {
+  max-width: 720px;
+  margin: 100px auto;
+  padding: 0 32px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid #222;
+  text-decoration: none;
+  color: #222;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #222;
+  color: #f5f2ee;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto 100px;
+  padding: 0 32px;
+}
+
+.card {
+  flex: 1;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e0dbd4;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: #666;
+  line-height: 1.65;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid #ddd;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.mb-3 {
+  align-items: center;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  width: 20%;
+  height: 45px;
+  padding: 10px 14px;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #222;
+  background-color: #faf9f7;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-select {
+  width: 20%;
+  height: 45px;
+  padding: 10px 14px;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #222;
+  background-color: #faf9f7;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+}
+
+btn {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-dark {
+  background-color: #222;
+  color: #f5f2ee;
+  border: 1px solid #222;
+}
+
+.btn-dark:hover {
+  background-color: #000;
+}
+
+.btn-lg {
+  padding: 12px 32px;
+  font-size: 1rem;
+}
