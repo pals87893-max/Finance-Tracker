@@ -7,7 +7,7 @@ from sqlalchemy import func,exists
 import calendar
 load_dotenv()
 app=Flask(__name__)
-app.secret_key = "39f44bddb56576c4a39a7106c7a682b3e63c03a833765ed69900f73d6e16ec64"
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///Expense.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 db=SQLAlchemy(app)
