@@ -74,7 +74,7 @@ def login():
             session['username']= user.Username
             return redirect(url_for('home'))
         else:
-            error="Couldn't found the email plaease Sign In first"
+            error="Couldn't found!\n check the email or password"
 
     return render_template('login.html',error=error)
 
@@ -94,7 +94,7 @@ def home():
         date=request.form.get('Month')
         Budget.query.filter_by(month=date).delete()
         if budget<0:
-            error='Set a positive number'
+            error='Set a positive number idiot!'
         else:
             db.session.add(Budget(month=date,budget=budget))
             db.session.commit()
