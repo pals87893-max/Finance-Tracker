@@ -30,7 +30,7 @@
   <form action="{{ url_for('home',username=username) }}" method="post">
     <div class="mb-3">
       <input type="number" class="form-control" name="budget" id="budget"
-        placeholder="{% if allBudget.budget %}{{ allBudget.budget_by_category }}{% else %}Enter your budget{% endif %}">
+        placeholder="{% if allBudget|length!=0 %}{{ allBudget[0].budget}}{% else %}Enter your budget{% endif %}">
       <select class="form-select" name="Month" aria-label="Default select example">
         <option selected>Enter the Month</option>
         <option value="January">January</option>
@@ -46,7 +46,7 @@
         <option value="November">November</option>
         <option value="December">December</option>
       </select>
-     <a class="btn btn-primary" href="/finance" type="submit" role="button">Check Finance</a>
+     <button type="submit" class="btn btn-dark btn-lg px-5">Check Finance</button>
     </div>
      {% if error %}
       <div style="padding: 20px; background-color: #f44336; color: white; margin-bottom: 15px;">
