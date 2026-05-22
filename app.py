@@ -167,4 +167,6 @@ def delete(sl_no):
     db.session.commit()
     return redirect(url_for('finance'))
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
